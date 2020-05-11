@@ -6,13 +6,14 @@ import androidx.fragment.app.FragmentStatePagerAdapter
 import androidx.viewpager2.adapter.FragmentStateAdapter
 
 class ViewPagerAdapter(fragmentActivity: FragmentActivity): FragmentStateAdapter(fragmentActivity) {
-    private val JUMLAH_MENU = 3
+    private val JUMLAH_MENU = 4
 
     override fun createFragment(position: Int): Fragment {
         when (position){
             0 -> {return MyFriendFragment()}
             1 -> {return GithubFragment()}
             2 -> {return ProfileFragment()}
+            3 -> {return HomeFragment()}
             else -> {
                 return GithubFragment()
             }

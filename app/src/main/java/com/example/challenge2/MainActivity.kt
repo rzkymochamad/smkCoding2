@@ -9,8 +9,8 @@ import java.util.*
 
 class MainActivity : AppCompatActivity() {
 
-    val menuTeks = arrayOf("Teman", "Github", "Profil")
-    val menuIcon = arrayOf(R.drawable.ic_friends2, R.drawable.ic_github1, R.drawable.ic_profil)
+    val menuTeks = arrayOf("Teman", "Github", "Profil", "Covid")
+    val menuIcon = arrayOf(R.drawable.ic_friends3, R.drawable.ic_github1, R.drawable.ic_profil, R.drawable.ic_global)
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

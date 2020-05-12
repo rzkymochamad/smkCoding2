@@ -1,4 +1,4 @@
-package com.example.challenge2
+package com.example.challenge2.Fragment
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -7,6 +7,9 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.annotation.Nullable
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.example.challenge2.Adapter.GithubUserAdapter
+import com.example.challenge2.DataClass.GithubUserItem
+import com.example.challenge2.R
 import data.GithubService
 import data.apiRequest
 import data.httpClient
@@ -18,7 +21,6 @@ import retrofit2.Response
 import util.dismissLoading
 import util.showLoading
 import util.tampilToast
-import java.net.CacheResponse
 
 /**
  * A simple [Fragment] subclass.
@@ -78,12 +80,16 @@ class GithubFragment : Fragment() {
 
     private fun tampilGithubUser(githubUsers: List<GithubUserItem>){
         listGithubUser.layoutManager = LinearLayoutManager(context)
-        listGithubUser.adapter = GithubUserAdapter(context!!, githubUsers){
+        listGithubUser.adapter =
+            GithubUserAdapter(
+                context!!,
+                githubUsers
+            ) {
 
-            val githubUser = it
-            tampilToast(context!!, githubUser.login)
+                val githubUser = it
+                tampilToast(context!!, githubUser.login)
 
-        }
+            }
     }
 
     override fun onDestroy() {

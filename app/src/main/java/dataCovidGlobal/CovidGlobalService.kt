@@ -1,10 +1,12 @@
 package dataCovidGlobal
 
-import com.example.challenge2.CovidGlobalItem
+import com.example.challenge2.DataClass.CovidGlobalItem
 import retrofit2.Call
 import retrofit2.http.GET
 
 interface CovidGlobalService {
     @GET("confirmed")
-    fun getGlobal(): Call<List<CovidGlobalItem>>
+    fun getGlobalCases(): Call<List<CovidGlobalItem>>
+
+
 }

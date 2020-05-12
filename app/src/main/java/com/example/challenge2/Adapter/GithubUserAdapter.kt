@@ -1,4 +1,4 @@
-package com.example.challenge2
+package com.example.challenge2.Adapter
 
 import android.content.Context
 import android.view.LayoutInflater
@@ -6,6 +6,8 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
+import com.example.challenge2.DataClass.GithubUserItem
+import com.example.challenge2.R
 import kotlinx.android.extensions.LayoutContainer
 import kotlinx.android.synthetic.main.github_user_item.*
 
@@ -13,7 +15,14 @@ class GithubUserAdapter(private val context: Context, private val items: List<Gi
     override fun onCreateViewHolder(
         parent: ViewGroup,
         viewType: Int
-    ) = ViewHolder(context, LayoutInflater.from(context).inflate(R.layout.github_user_item, parent, false))
+    ) = ViewHolder(
+        context,
+        LayoutInflater.from(context).inflate(
+            R.layout.github_user_item,
+            parent,
+            false
+        )
+    )
 
     override fun getItemCount(): Int {
         return items.size

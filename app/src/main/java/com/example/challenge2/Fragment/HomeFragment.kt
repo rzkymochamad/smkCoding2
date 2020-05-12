@@ -1,4 +1,4 @@
-package com.example.challenge2
+package com.example.challenge2.Fragment
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -7,6 +7,9 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.annotation.Nullable
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.example.challenge2.Adapter.CovidGlobalAdapter
+import com.example.challenge2.DataClass.CovidGlobalItem
+import com.example.challenge2.R
 import dataCovidGlobal.CovidGlobalService
 import dataCovidGlobal.apiRequest
 import retrofit2.Call
@@ -29,7 +32,7 @@ class HomeFragment : Fragment() {
         val httpClient = httpClient()
         val apiRequest = apiRequest<CovidGlobalService>(httpClient)
 
-        val call = apiRequest.getGlobal()
+        val call = apiRequest.getGlobalCases()
         call.enqueue(object : Callback<List<CovidGlobalItem>>{
             override fun onFailure(call: Call<List<CovidGlobalItem>>, t: Throwable) {
                 dismissLoading(swipeRefreshLayout1)
@@ -51,7 +54,7 @@ class HomeFragment : Fragment() {
                             }
                         }
                     else->
-                        tampilToast(context!!, "Gagal")
+                        tampilToast(context!!, ".")
                 }
             }
         })
@@ -59,11 +62,15 @@ class HomeFragment : Fragment() {
 
     private fun tampilCovidGlobal(covidGlobals: List<CovidGlobalItem>){
         listCovidGlobal.layoutManager = LinearLayoutManager(context)
-        listCovidGlobal.adapter = CovidGlobalAdapter(context!!, covidGlobals){
+        listCovidGlobal.adapter =
+            CovidGlobalAdapter(
+                context!!,
+                covidGlobals
+            ) {
 
-            val covidGlobal = it
-            tampilToast(context!!, covidGlobal.countryRegion)
-        }
+                val covidGlobal = it
+                tampilToast(context!!, covidGlobal.combinedKey)
+            }
     }
 
     override  fun onCreate(savedInstanceState: Bundle?){

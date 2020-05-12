@@ -1,4 +1,4 @@
-package com.example.challenge2
+package com.example.challenge2.Fragment
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -7,6 +7,9 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.annotation.Nullable
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.example.challenge2.Adapter.MyFriendAdapter
+import com.example.challenge2.DataClass.MyFriend
+import com.example.challenge2.R
 import kotlinx.android.synthetic.*
 import kotlinx.android.synthetic.main.fragment_my_friend.*
 
@@ -18,13 +21,30 @@ class MyFriendFragment : Fragment() {
     lateinit var listTeman:ArrayList<MyFriend>
     private fun simulasiDataTeman(){
         listTeman = ArrayList()
-        listTeman.add(MyFriend("Rizky", "Laki-laki", "rizky@smkcoding.id", "081666777888", "Malang"))
-        listTeman.add(MyFriend("Can", "Perempuan", "can@smkcoding.id", "081222333444", "Lawang"))
+        listTeman.add(
+            MyFriend(
+                "Rizky",
+                "Laki-laki",
+                "rizky@smkcoding.id",
+                "081666777888",
+                "Malang"
+            )
+        )
+        listTeman.add(
+            MyFriend(
+                "Can",
+                "Perempuan",
+                "can@smkcoding.id",
+                "081222333444",
+                "Lawang"
+            )
+        )
     }
 
     private fun tampilTeman(){
         rv_listMyFriends.layoutManager = LinearLayoutManager(activity)
-        rv_listMyFriends.adapter = MyFriendAdapter(activity!!, listTeman)
+        rv_listMyFriends.adapter =
+            MyFriendAdapter(activity!!, listTeman)
     }
 
     private fun initView(){

@@ -1,4 +1,4 @@
-package com.example.challenge2
+package com.example.challenge2.DataClass
 
 data class MyFriend(
     val nama : String,

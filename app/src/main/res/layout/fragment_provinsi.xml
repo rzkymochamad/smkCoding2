@@ -32,7 +32,7 @@
             android:textSize="14sp"
             android:text="Confirmed"
             android:gravity="center"
-            android:drawableLeft="@drawable/ic_yellow"
+            android:drawableLeft="@drawable/ic_blue"
             android:layout_weight="1"/>
 
         <TextView

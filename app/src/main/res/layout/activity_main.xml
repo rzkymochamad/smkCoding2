@@ -7,6 +7,20 @@
     tools:context=".Activity.MainActivity"
     android:orientation="vertical">
 
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:text="AntiCovid"
+        android:textColor="#ffffff"
+        android:paddingLeft="20dp"
+        android:gravity="center_vertical"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        android:fontFamily="serif"
+        android:background="#00BCD4"
+        android:drawableLeft="@drawable/ic_protection32"
+        android:drawablePadding="2dp"/>
+
     <androidx.viewpager2.widget.ViewPager2
         android:id="@+id/view_pager"
         android:layout_width="match_parent"

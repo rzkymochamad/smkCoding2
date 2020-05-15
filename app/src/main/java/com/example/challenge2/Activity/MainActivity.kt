@@ -10,12 +10,12 @@ import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity() {
 
-    val menuTeks = arrayOf("Teman", "Github", "Local", "Global")
+    val menuTeks = arrayOf("Global", "Local", "Hmm", "Tips")
     val menuIcon = arrayOf(
-        R.drawable.ic_friends3,
-        R.drawable.ic_github1,
+        R.drawable.ic_global,
         R.drawable.ic_information_point,
-        R.drawable.ic_global
+        R.drawable.ic_information_point,
+        R.drawable.ic_tips
     )
 
     override fun onCreate(savedInstanceState: Bundle?) {

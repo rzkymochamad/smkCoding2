@@ -8,23 +8,22 @@
     android:padding="5dp">
 
     <TextView
-        android:id="@+id/txtFriendName"
+        android:id="@+id/txtJudul"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textSize="18sp"
         android:textStyle="bold"
         android:text="Nama"/>
 
-    <TextView
-        android:id="@+id/txtFriendEmail"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textSize="16sp"
-        android:textStyle="italic"
-        android:text="Email"/>
+    <ImageView
+        android:id="@+id/imgTips"
+        android:layout_width="150dp"
+        android:layout_height="150dp"
+        android:layout_gravity="center"
+        android:layout_margin="8dp"/>
 
     <TextView
-        android:id="@+id/txtFriendTelp"
+        android:id="@+id/txtDesc"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textSize="16sp"

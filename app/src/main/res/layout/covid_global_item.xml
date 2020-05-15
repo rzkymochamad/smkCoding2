@@ -11,7 +11,6 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:padding="8dp"
         android:orientation="horizontal"
         android:gravity="center">
 
@@ -19,7 +18,8 @@
             android:id="@+id/imgCountry"
             android:layout_width="wrap_content"
             android:layout_height="100dp"
-            android:src="@drawable/ic_launcher_background"/>
+            android:src="@drawable/ic_launcher_background"
+            android:layout_marginLeft="16dp"/>
 
         <LinearLayout
             android:layout_width="match_parent"

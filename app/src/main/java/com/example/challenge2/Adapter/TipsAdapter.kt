@@ -5,16 +5,17 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import com.example.challenge2.DataClass.MyFriend
+import com.bumptech.glide.Glide
+import com.example.challenge2.DataClass.Covid19
 import com.example.challenge2.R
 import kotlinx.android.extensions.LayoutContainer
-import kotlinx.android.synthetic.main.my_friend_item.*
+import kotlinx.android.synthetic.main.tips_item.*
 
-class MyFriendAdapter(private val context: Context, private val items: ArrayList<MyFriend>): RecyclerView.Adapter<MyFriendAdapter.ViewHolder>() {
+class TipsAdapter(private val context: Context, private val items: ArrayList<Covid19>): RecyclerView.Adapter<TipsAdapter.ViewHolder>() {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int) =
         ViewHolder(
             LayoutInflater.from(context).inflate(
-                R.layout.my_friend_item,
+                R.layout.tips_item,
                 parent,
                 false
             )
@@ -29,10 +30,11 @@ class MyFriendAdapter(private val context: Context, private val items: ArrayList
     }
 
     class ViewHolder(override val containerView: View): RecyclerView.ViewHolder(containerView), LayoutContainer{
-        fun bindItem(item: MyFriend){
-            txtFriendName.text = item.nama
-            txtFriendEmail.text = item.email
-            txtFriendTelp.text = item.telp
+        fun bindItem(item: Covid19){
+            txtJudul.text = item.judul
+            txtDesc.text = item.desc
+
+            Glide.with(itemView.context).load(item.gambar).into(imgTips)
         }
     }
 }

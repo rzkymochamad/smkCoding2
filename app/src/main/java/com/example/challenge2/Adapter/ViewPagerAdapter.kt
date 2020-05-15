@@ -10,13 +10,13 @@ class ViewPagerAdapter(fragmentActivity: FragmentActivity): FragmentStateAdapter
 
     override fun createFragment(position: Int): Fragment {
         when (position){
-            0 -> {return MyFriendFragment()
+            0 -> {return HomeFragment()
             }
-            1 -> {return GithubFragment()
+            1 -> {return ProvinsiFragment()
             }
-            2 -> {return ProvinsiFragment()
+            2 -> {return GithubFragment()
             }
-            3 -> {return HomeFragment()
+            3 -> {return TipsFragment()
             }
             else -> {
                 return GithubFragment()

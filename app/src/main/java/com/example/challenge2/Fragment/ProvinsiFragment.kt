@@ -1,5 +1,6 @@
 package com.example.challenge2.Fragment
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -7,7 +8,9 @@ import android.view.ViewGroup
 import androidx.annotation.Nullable
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.example.challenge2.Activity.WebActivity
 import com.example.challenge2.Adapter.CovidProvinceAdapter
+import com.example.challenge2.DataClass.Attributes
 import com.example.challenge2.DataClass.CovidProvinsiItem
 import com.example.challenge2.R
 import data.apiRequest
@@ -53,40 +56,36 @@ class ProvinsiFragment : Fragment() {
         val apiRequest = apiRequestCP<CovidProvinsiService>(httpClient)
 
         val call = apiRequest.getProvinsi()
-        call.enqueue(object: Callback<List<CovidProvinsiItem>>{
-            override fun onFailure(call: Call<List<CovidProvinsiItem>>, t: Throwable) {
+        call.enqueue(object: Callback<CovidProvinsiItem>{
+            override fun onFailure(call: Call<CovidProvinsiItem>, t: Throwable) {
                 dismissLoading(swipeProvinsi)
             }
 
-            override fun onResponse(
-                call: Call<List<CovidProvinsiItem>>,
-                response: Response<List<CovidProvinsiItem>>
-            ) {
+            override fun onResponse(call: Call<CovidProvinsiItem>, response: Response<CovidProvinsiItem>) {
                 dismissLoading(swipeProvinsi)
-
+//
                 when{
                     response.isSuccessful->
                         when{
-                            response.body()?.size != 0->
-                                tampilCovidProvince(response.body()!!)
-
+                            response.body()?.attributes?.size != 0 ->
+                                tampilCovidProvince(response.body()!!.attributes)
                             else->{
                                 tampilToast(context!!, "Berhasil")
                             }
                         }
-                    else->{
+                    else->
                         tampilToast(context!!, "Gagal")
-                    }
                 }
             }
         })
     }
 
-    private fun tampilCovidProvince(provinsi: List<CovidProvinsiItem>){
+    private fun tampilCovidProvince(provinsi: List<Attributes>){
         listCovidProvinsi.layoutManager = LinearLayoutManager(context)
         listCovidProvinsi.adapter = CovidProvinceAdapter(context!!, provinsi){
             val provinsiss = it
-            tampilToast(context!!, provinsiss.attributes.provinsi)
+            tampilToast(context!!, provinsiss.provinsi)
+
         }
     }
 

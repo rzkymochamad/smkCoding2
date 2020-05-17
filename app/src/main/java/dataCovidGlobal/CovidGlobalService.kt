@@ -6,7 +6,11 @@ import retrofit2.http.GET
 
 interface CovidGlobalService {
     @GET("confirmed")
-    fun getGlobalCases(): Call<List<CovidGlobalItem>>
+    fun getGlobalConfirmed(): Call<List<CovidGlobalItem>>
+    @GET("recovered")
+    fun getGlobalRecovered(): Call<List<CovidGlobalItem>>
+    @GET("deaths")
+    fun getGlobalDeaths(): Call<List<CovidGlobalItem>>
 
 
 }

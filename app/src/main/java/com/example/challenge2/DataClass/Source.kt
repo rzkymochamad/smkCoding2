@@ -4,7 +4,9 @@ package com.example.challenge2.DataClass
 import com.google.gson.annotations.SerializedName
 import java.io.Serializable
 
-data class CovidProvinsiItem(
-    @SerializedName("attributes")
-    val attributes: List<Attributes>
+data class Source(
+    @SerializedName("id")
+    val id: Any,
+    @SerializedName("name")
+    val name: String
 ):Serializable

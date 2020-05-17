@@ -24,3 +24,7 @@ Project aplikasi SMKCoding Challenge 2 yang bertema Virus Corona yg bisa membant
 ### 3. Page Tips
 
 ![Test Aplikasi](https://github.com/rzkymochamad/smkCoding2/blob/master/ScreenShot/tips.png)
+
+### Link APK AntiCovid by Google Drive
+
+Link : https://drive.google.com/open?id=1qnLIXaH-96EPsHknoIuzPnqUBXJai504

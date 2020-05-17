@@ -10,6 +10,8 @@ import com.example.challenge2.DataClass.CovidGlobalItem
 import com.example.challenge2.R
 import kotlinx.android.extensions.LayoutContainer
 import kotlinx.android.synthetic.main.covid_global_item.*
+import java.text.NumberFormat
+import java.util.*
 
 class CovidGlobalAdapter(private val context: Context, private val items:List<CovidGlobalItem>, private val listener: (CovidGlobalItem)->Unit):RecyclerView.Adapter<CovidGlobalAdapter.ViewHolder>() {
     override fun onCreateViewHolder(
@@ -34,14 +36,21 @@ class CovidGlobalAdapter(private val context: Context, private val items:List<Co
 
     class ViewHolder(val context: Context, override val containerView: View):RecyclerView.ViewHolder(containerView), LayoutContainer{
         fun bindItem(item: CovidGlobalItem, listener: (CovidGlobalItem) -> Unit){
+
             txtCountry.text = item.combinedKey
-            txtConfirmed.text = item.confirmed.toString()
-            txtRecovered.text = item.recovered.toString()
-            txtDeaths.text = item.deaths.toString()
+            txtConfirmed.text = formatAngka(item.confirmed)
+            txtRecovered.text = formatAngka(item.recovered)
+            txtDeaths.text = formatAngka(item.deaths)
 
             Glide.with(context).load("https://www.countryflags.io/"+item.iso2+"/flat/32.png").into(imgCountry)
 
             containerView.setOnClickListener{listener(item)}
+        }
+
+        fun formatAngka(number: Int):String{
+            val localeID = Locale("in", "ID")
+            val numberFormat = NumberFormat.getNumberInstance(localeID)
+            return numberFormat.format(number).toString()
         }
     }
 }

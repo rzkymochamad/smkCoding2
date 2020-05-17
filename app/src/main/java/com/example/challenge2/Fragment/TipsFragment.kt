@@ -1,75 +1,34 @@
 package com.example.challenge2.Fragment
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.annotation.Nullable
+import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.challenge2.Adapter.TipsAdapter
-import com.example.challenge2.DataClass.Covid19
+import com.example.challenge2.DataClass.TipsItem
 import com.example.challenge2.R
+import dataTips.TipsService
+import dataTips.apiTips
+import dataTips.httpClient
 import kotlinx.android.synthetic.*
 import kotlinx.android.synthetic.main.fragment_tips.*
+import retrofit2.Call
+import retrofit2.Callback
+import retrofit2.Response
+import util.dismissLoading
+import util.showLoading
+import util.tampilToast
+
 
 /**
  * A simple [Fragment] subclass.
  */
 class TipsFragment : Fragment() {
 
-    lateinit var listTipsCovid:ArrayList<Covid19>
-    private fun simulasiDataTeman(){
-        listTipsCovid = ArrayList()
-        listTipsCovid.add(
-            Covid19(
-                "1. Cuci tangan sesering mungkin",
-                R.drawable.ic_wash,
-                "Cuci tangan secara teratur dan sesering mungkin dengan sabun dan air atau bahan mengandung alkohol akan membunuh virus yang mungkin ada di tangan anda."
-            )
-        )
-        listTipsCovid.add(
-            Covid19(
-                "2. Terapkan social distancing",
-                R.drawable.ic_distance,
-                "Jaga jarak minimal 1 meter dengan mereka yang batuk atau bersih. Alasannya, ketika seseorang batuk atau bersin atau bersih, mereka menyemprotkan tetesan cairan kecil dari hidung atau mulut mereka yang mungkin mengandung virus. Jika terlalu dekat, anda bisa menghirup tetesan air yang mungkin saja mengandung virus COVID-19."
-            )
-        )
-        listTipsCovid.add(
-            Covid19(
-                "3. Hindari menyentuh mata, hidung dan mulut",
-                R.drawable.ic_touch,
-                "Tangan menyentuh banyak permukaan dan virus mungkin menempel di sana. Setelah terkontaminasi, tangan dapat memindahkan virus ke mata, hidung, atau mulut anda. Dari sana, virus bisa masuk ke tubuh dan bisa membuat sakit."
-            )
-        )
-        listTipsCovid.add(
-            Covid19(
-                "4. Lakukan aturan bersin yang benar",
-                R.drawable.ic_virus,
-                "Tetap di rumah jika Anda merasa tidak sehat. Jika Anda mengalami demam, batuk dan kesulitan bernapas, cari bantuan medis dan ikuti arahan otoritas kesehatan setempat. Otoritas nasional dan lokal akan memiliki informasi terbaru tentang situasi di daerah Anda."
-            )
-        )
-        listTipsCovid.add(
-            Covid19(
-                "5. Jika mengalami demam, batuk, dan kesulitan bernapas, segeralah berobat",
-                R.drawable.ic_hospital,
-                "Tetap di rumah jika Anda merasa tidak sehat. Jika Anda mengalami demam, batuk dan kesulitan bernapas, cari bantuan medis dan ikuti arahan otoritas kesehatan setempat. Otoritas nasional dan lokal akan memiliki informasi terbaru tentang situasi di daerah Anda."
-            )
-        )
-    }
-
-    private fun tampilTeman(){
-        listTips.layoutManager = LinearLayoutManager(activity)
-        listTips.adapter =
-            TipsAdapter(activity!!, listTipsCovid)
-    }
-
-    private fun initView(){
-        simulasiDataTeman()
-        tampilTeman()
-    }
-
-    override fun onCreate(savedInstanceState: Bundle?) {
+    override  fun onCreate(savedInstanceState: Bundle?){
         super.onCreate(savedInstanceState)
     }
 
@@ -83,12 +42,60 @@ class TipsFragment : Fragment() {
 
     override fun onViewCreated(view: View,@Nullable savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        initView()
+        callApiGetGithubUser()
+    }
+
+    private fun callApiGetGithubUser(){
+        showLoading(context!!, swipeTips)
+
+        val httpClient = httpClient()
+        val apiRequest = apiTips<TipsService>(httpClient)
+
+        val call = apiRequest.getTips()
+        call.enqueue(object : Callback<List<TipsItem>> {
+
+            override fun onFailure(call: Call<List<TipsItem>>, t: Throwable){
+                dismissLoading(swipeTips)
+            }
+
+            override fun onResponse(call: Call<List<TipsItem>>, response: Response<List<TipsItem>>){
+                dismissLoading(swipeTips)
+
+                when{
+                    response.isSuccessful ->
+                        when{
+                            response.body()?.size != 0 ->
+                                tampilTips(response.body()!!)
+
+                            else->{
+                                tampilToast(context!!, "Berhasil")
+                            }
+                        }
+                    else->{
+                        tampilToast(context!!, "Gagal")
+                    }
+                }
+            }
+        })
+    }
+
+    private fun tampilTips(ib: List<TipsItem>){
+        listTips.layoutManager = LinearLayoutManager(context)
+        listTips.adapter =
+            TipsAdapter(
+                context!!,
+                ib
+            ) {
+
+                val asc = it
+                tampilToast(context!!, asc.judul)
+
+            }
     }
 
     override fun onDestroy() {
-        super.onDestroy()
-        this.clearFindViewByIdCache()
+        super .onDestroy()
+        this . clearFindViewByIdCache ()
     }
 
 }

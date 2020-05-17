@@ -10,10 +10,10 @@ import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity() {
 
-    val menuTeks = arrayOf("Global", "News", "Tips")
+    val menuTeks = arrayOf("Global", "Total", "News", "Tips")
     val menuIcon = arrayOf(
         R.drawable.ic_global,
-//        R.drawable.ic_information_point,
+        R.drawable.ic_total,
         R.drawable.ic_news,
         R.drawable.ic_tips
     )

@@ -7,19 +7,33 @@
     tools:context=".Activity.WebActivity"
     android:orientation="vertical">
 
-    <TextView
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="50dp"
-        android:text="AntiCovid"
-        android:textColor="#ffffff"
-        android:paddingLeft="20dp"
-        android:gravity="center_vertical"
-        android:textSize="24sp"
-        android:textStyle="bold"
-        android:fontFamily="serif"
-        android:background="#00BCD4"
-        android:drawableLeft="@drawable/ic_protection32"
-        android:drawablePadding="2dp"/>
+        android:background="#0DAFF8"
+        android:orientation="horizontal">
+
+        <ImageView
+            android:id="@+id/backF"
+            android:layout_width="45dp"
+            android:layout_height="45dp"
+            android:src="@drawable/ic_back"
+            android:layout_gravity="center"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:text="AntiCovid"
+            android:textColor="#ffffff"
+            android:gravity="center_vertical"
+            android:textSize="24sp"
+            android:textStyle="bold"
+            android:fontFamily="serif"
+            android:drawableLeft="@drawable/ic_protection32"
+            android:drawablePadding="2dp"/>
+    </LinearLayout>
+
+
 
     <WebView
         android:layout_width="match_parent"

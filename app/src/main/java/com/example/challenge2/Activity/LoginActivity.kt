@@ -18,7 +18,7 @@ class LoginActivity : AppCompatActivity(), View.OnClickListener {
 
     override fun onCreate(savedInstanceState: Bundle?) {
 
-        super.onCreate(savedInstanceState)
+        super.onCreate(savedInstanceState) 
         setContentView(R.layout.activity_login)
 
         progress.visibility = View.GONE

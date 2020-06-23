@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "852181232300",
+    "firebase_url": "https://anticovid-e7442.firebaseio.com",
+    "project_id": "anticovid-e7442",
+    "storage_bucket": "anticovid-e7442.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:852181232300:android:5326b3798bb89c1f328d09",
+        "android_client_info": {
+          "package_name": "com.example.challenge2"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "852181232300-20pt75vh7fl7q0qgamoah159j0e7mja6.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCohjzFQdGYKAkBBYkhsw4QubeEJmym_2c"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "852181232300-20pt75vh7fl7q0qgamoah159j0e7mja6.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

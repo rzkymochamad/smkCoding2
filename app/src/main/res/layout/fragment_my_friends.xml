@@ -7,18 +7,8 @@
     android:orientation="vertical">
 
     <!-- TODO: Update blank fragment layout -->
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:textSize="18sp"
-        android:gravity="center_horizontal"
-        android:layout_marginLeft="16dp"
-        android:layout_marginTop="16dp"
-        android:layout_marginRight="16dp"
-        android:text="Tips Mencegah Penyebaran Covid-19" />
-
     <ImageButton
-        android:id="@+id/tambah"
+        android:id="@+id/plus"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
@@ -30,10 +20,13 @@
         android:id="@+id/swipeTips">
 
         <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/listTips"
+            android:id="@+id/rv_listFriend"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="16dp"/>
     </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
+
+
+
 
 </LinearLayout>

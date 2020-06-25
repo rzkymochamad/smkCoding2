@@ -5,9 +5,14 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Toast
 import com.example.challenge2.R
+import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.database.DatabaseReference
 import kotlinx.android.synthetic.main.activity_register.*
 
 class RegisterActivity : AppCompatActivity() {
+
+    lateinit var ref : DatabaseReference
+    private var auth : FirebaseAuth? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -41,6 +46,16 @@ class RegisterActivity : AppCompatActivity() {
         mSaveData.setString("Nama", txtNamaReg.text.toString())
         mSaveData.setString("Email", txtEmailReg.text.toString())
         mSaveData.setString("Password", txtPasswordReg.text.toString())
+
+//        val getNama: String = txtNamaReg.text.toString()
+//        val getEmail: String = txtEmailReg.text.toString()
+//        val getPassword: String = txtPasswordReg.text.toString()
+//        val getUserID: String = auth?.currentUser()?.getUid()
+//
+//        val user = UserModel(getNama, getEmail, getPassword, "")
+//        ref.child(getUserID).child("User").push().setValue(user).addOnCompleteListener{
+//
+//        }
 
         Toast.makeText(this, "Register Berhasil", Toast.LENGTH_SHORT).show()
 

@@ -32,7 +32,7 @@ import util.tampilToast
 class HomeFragment : Fragment() {
 
     private fun callApiGetCovidGlobal(){
-        var abc = txtSort.selectedItem.toString()
+//        var abc = txtSort.selectedItem.toString()
         showLoading(context!!, swipeRefreshLayout1)
 
         val httpClient = httpClient()

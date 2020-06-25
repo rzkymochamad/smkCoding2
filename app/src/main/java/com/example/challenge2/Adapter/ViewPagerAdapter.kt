@@ -16,7 +16,7 @@ class ViewPagerAdapter(fragmentActivity: FragmentActivity): FragmentStateAdapter
             }
             2 -> {return NewsFragment()
             }
-            3 -> {return TipsFragment()
+            3 -> {return MyFriendFragment()
             }
             else -> {
                 return HomeFragment()

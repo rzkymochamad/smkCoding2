@@ -18,13 +18,22 @@ class LoginActivity : AppCompatActivity(), View.OnClickListener {
 
     override fun onCreate(savedInstanceState: Bundle?) {
 
-        super.onCreate(savedInstanceState) 
+        super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_login)
 
         progress.visibility = View.GONE
         btn_login.setOnClickListener { validasiLogin() }
         signUp.setOnClickListener { toRegister() }
+
         btn_gugel.setOnClickListener(this)
+        auth = FirebaseAuth.getInstance()
+        if (auth!!.currentUser == null) {
+        } else {
+            intent = Intent(applicationContext, MainActivity::class.java)
+            startActivity(intent)
+            finish()
+        }
+
     }
 
     private fun toRegister() {

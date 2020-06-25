@@ -27,6 +27,7 @@ class ProfileFragment : Fragment() {
 
     override fun onViewCreated(view: View,@Nullable  savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
     }
 
 }

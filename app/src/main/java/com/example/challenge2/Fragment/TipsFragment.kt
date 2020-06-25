@@ -1,5 +1,6 @@
 package com.example.challenge2.Fragment
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -7,6 +8,7 @@ import android.view.ViewGroup
 import androidx.annotation.Nullable
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.example.challenge2.Activity.FriendActivity
 import com.example.challenge2.Adapter.TipsAdapter
 import com.example.challenge2.DataClass.TipsItem
 import com.example.challenge2.R
@@ -15,6 +17,7 @@ import dataTips.apiTips
 import dataTips.httpClient
 import kotlinx.android.synthetic.*
 import kotlinx.android.synthetic.main.fragment_tips.*
+import kotlinx.android.synthetic.main.fragment_tips.swipeTips
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -43,6 +46,10 @@ class TipsFragment : Fragment() {
     override fun onViewCreated(view: View,@Nullable savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         callApiGetGithubUser()
+        tambah.setOnClickListener {
+            val intent = Intent (context, FriendActivity::class.java)
+            startActivity(intent)
+        }
     }
 
     private fun callApiGetGithubUser(){
